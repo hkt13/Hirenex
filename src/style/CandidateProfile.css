@@ -1,0 +1,143 @@
+.job-container{
+    font-size: 1rem;
+}
+
+.profile-container{
+    background: white;
+    padding: 1.3rem;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e7e7f1;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    margin-bottom: 22px;
+}
+
+
+.profile-container .candidate-profile{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 11px;
+}
+
+.candidate-info span{
+    font-size: 1.2rem;
+    color: #09cab7;
+    font-weight: 500;
+}
+
+.candidate-info p{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.open-btn{
+    font-size: 1rem;
+    width: 5rem;
+    background: #058f8f;
+    color: white;
+    height: 2.3rem;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer
+}
+
+.open-btn span{
+    margin-left: 5px;
+
+}
+
+.candidate-otherinfo{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 20px;
+    border-top: 1px solid #e7e7f1;
+    padding-top: 20px;
+}
+
+.candidate-skills{
+    display: flex;
+    padding-bottom: 13px;
+    border-top: 1px solid #e7e7f1;
+    padding-top: 13px;
+    align-items: center;
+
+}
+
+ .skill-box{
+    display: flex;
+    margin-left: 3px;
+ }
+
+.skill-name{
+    background: #f3f3fdd4;
+    border-radius: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    padding: 6px 11px;
+    font-size: 0.925rem;
+    letter-spacing: 0.35px;
+}
+
+.footer-info .skill-name .skill-name-icon, .status-icon{
+    color: #058f8f;
+}
+
+.footer-info .skill-name span{
+    margin-left: 5px;
+}
+
+ .footer-info{
+    display: flex;
+    padding-bottom: 3px;
+    border-top: 1px solid #e7e7f1;
+    padding-top: 13px;
+    align-items: center;
+ }
+
+ .footer-info .location-info, .workstatus, .education-info{
+    display: flex;
+    padding-right: 8px;
+    border-left: 1px solid #e7e7f1;
+    padding-left: 13px;
+    align-items: center;
+ }
+
+.location-info{
+    padding-left: 0px !important;
+    border: none !important;
+}
+
+.workstatus .workstatus-info{
+    margin-left: 7px;
+    text-transform: capitalize;
+}
+
+.education-info .status-icon span{
+    margin-left: 4px;
+    color: #000000;
+}
+
+.candidate-skills>span, .location-info>span{
+    color: #000000;
+}
+
+.box-title{
+    margin-bottom: 4.5px;
+}
+
+ .box .box-title span{
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+ }
+
+ .box >span{
+    color: slategray;
+ }

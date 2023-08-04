@@ -1,0 +1,23 @@
+.hero-customers{
+    border: 2px solid olive;
+}
+
+.happycustomers{
+    width: 90vw;
+    max-width: 1170px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.happycustomers h1{
+    font-size: 1.5rem;
+    color: #2d2d2d;
+    margin-top: 2.15rem;
+    margin-bottom: 3.75rem;
+    letter-spacing: 1.1px;
+    font-weight: 600;
+    text-transform: uppercase;
+}

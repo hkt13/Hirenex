@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.job-search{
+    border: 2px solid red;
+    padding: 3rem 6rem;
+    background: #f3f3fdd4;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 280px 1fr;
+    font-family: 'Lato', sans-serif;
+}
+
+.filter-container{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e7e7f1;
+    height: 26rem;
+}
+
+.filter-common{
+    padding-top: 20px;
+    position: relative;
+    padding-bottom: 20px;
+    border-top: 1px solid #e7e7f1;
+}
+
+.filter-container .all-filters{
+    padding: 28px 28px 16px;
+    border-radius: 10px 10px 0 0;
+}
+
+.filter-container .filter{
+    padding: 0 28px;
+}
+
+.filter .experience{
+    position: relative;
+    padding-bottom: 20px;
+    border-top: 1px solid #e7e7f1;
+}
+
+.filter-title{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: #121224;
+}
+
+.checkcon{
+margin-top: 12px;
+}
+
+.checkcon label{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #474d6a;
+    margin-left: 12px;
+    user-select: none;
+}
+
+.experience-list{
+    margin-top: 2.3rem;
+}
+
+.exp-years{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #474d6a;
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 0 1px;
+}
+
+.price-range{
+    width: 100%; /* Adjust the width as per your requirement */
+    height: 4px; /* This will make the slider thin */
+    border-radius: 2px; /* Optional: Add rounded corners for a better appearance */
+    /* -webkit-appearance: none;
+    appearance: none; */
+    margin-bottom: 10px;
+}
+

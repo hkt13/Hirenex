@@ -1,0 +1,114 @@
+.hero-testimonials{
+    border: 2px solid orange;
+}
+
+.testimonials{
+    width: 90vw;
+max-width: 1170px;
+margin: auto;
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.testimonials-container{
+    position: relative;
+}
+
+.testimonials-container .arrow-left{
+    position: absolute;
+    top: 37%;
+    left: -4rem;
+    cursor: pointer;
+    background: none;
+    outline: none !important;
+    border: none;
+    user-select: none;
+}
+
+.testimonials-container .arrow-right{
+    position: absolute;
+    top: 37%;
+    right: -4rem;
+    cursor: pointer;
+    background: none;
+    outline: none !important;
+    border: none;
+    user-select: none;
+}
+
+.testimonials> h1{
+    margin-bottom: 2rem;
+}
+
+.testimonials-info{
+    display: grid;
+    grid-gap: 1rem;
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    padding: 1.3rem;
+    max-width: 747px;
+    grid-template-columns: 273px 1fr;
+    /* margin: auto; */
+    /* width: 100%; */
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 3px 9px -1px;
+    /* animation: slide 0.5s ease; */
+  }
+  
+  /* @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  } */
+
+.testi-img img{
+    
+    height: 20rem;
+    width: 16rem;
+    object-fit: cover;
+    display: inline-block;
+    border-radius: 20px;
+
+}
+
+.testi-desc{
+    margin-top: 7px;
+}
+
+.testi-header{
+    position: relative;
+    margin-bottom: 0.7rem;
+}
+
+.testi-header h3{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.testi-header p{
+    margin-top: 2px;
+    font-size: 1.1rem;
+    color: #429542f5;
+}
+
+.testi-linkedin{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}
+
+.testi-desc-info{
+    font-size: 1.2rem;
+    font-weight: 300 !important;
+}
+
+.testi-desc-info p{
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: #636a72;
+}
