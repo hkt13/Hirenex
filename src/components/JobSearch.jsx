@@ -3,115 +3,55 @@ import { useState, useEffect, useRef } from "react";
 import data from  "../data/jobprofile.json"
 import Profile from "./CandidateProfile";
 const JobSearch = () => {
-const [newprofiles, setnewprofiles] = useState([])
-const [expprofile, setexpprofile] = useState([])
+  const inputRef = useRef(null);
 const [featuredProfile, setfeaturedProfile] = useState(data)
-const [age, setage] = useState(0)
-const [flag, setflag] = useState(false)
-const [exp, setexp] = useState(15)
-const [mode, setmode] = useState([])
-// const [isChecked, setisChecked] = useState(false);
-const workRef = useRef(null);
-const hybridRef = useRef(null);
-const remoteRef = useRef(null);
-
-function getRandomElementsFromArray(arr, numElements) {
-  if (numElements >= arr.length) {
-    // Return a copy of the original array if numElements is greater than or equal to the array length
-    return arr.slice();
-  }
-
-  const shuffledArray = arr.slice(); // Create a copy of the original array
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    // Shuffle the array using Fisher-Yates algorithm
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-
-  return shuffledArray.slice(0, numElements); // Return the first numElements from the shuffled array
-}
-
-
-function newProfiles(val, modifiedArray) {
-    console.log(modifiedArray)
-    console.log(mode)
-    setexp(val)
-    let newdata = data.filter(profile=>{
-        return profile.experience===`${val} years`;
-    })
-    console.log(newdata, mode)
-    if(mode.length!==0 && modifiedArray.length!==0){
-      console.log('entered')
-      newdata = newdata.filter(profile=>{
-        return mode.some((m) => profile.work_mode === m.toLowerCase());
-    })
-    setnewprofiles(newdata)
-    }
-    console.log(newdata)
-    setage(val)
-    // setnewprofiles([...newprofiles,...newdata])
-    setfeaturedProfile(newdata)
-}
+const [checkedText, setcheckedText] = useState([])
+const [ExYears, setExYears] = useState(null)
 
 function HandleChange(e) {
-    console.log(e.target.value)
-    newProfiles(e.target.value, ["testing"])
-
+  setExYears(inputRef.current.value);
 }
 
-const handleCheckChange = (e) => {
-   if(e.target.checked){
-    if(workRef.current.checked||hybridRef.current.checked||remoteRef.current.checked){
-      const target = e.target.nextElementSibling.innerText;
-      setmode([...mode, target])
-        let newdata= data.filter(profile=>{
-            return profile.work_mode===target.toLowerCase();
-        })
-        console.log(newdata)
-        if(exp!=15){
-          newdata = newdata.filter(profile=>{
-            return profile.experience===`${exp} years`;
-          })
-        }
-        console.log(newdata)
-        console.log([...newprofiles,...newdata])
-        setnewprofiles([...newprofiles,...newdata])
-        setfeaturedProfile([...newprofiles,...newdata])
-    }
+function HandleCheckChange(e) {
+  let target = e.target.nextElementSibling.innerText.toLowerCase();
+  if(e.target.checked){
+       setcheckedText([...checkedText, target])
+  }
+  else{
+    setcheckedText(checkedText.filter(text=>{
+      return text!==target
+    }))
+  }
 }
-    else{
-      console.log(mode)
-        let target = e.target.nextElementSibling.innerText;
-        const modifiedArray = mode.filter((element) => element !== target);
-        console.log(modifiedArray,mode)
-        setmode(modifiedArray);
-        let newdata = featuredProfile.filter(profile=>{
-            return profile.work_mode!==target.toLowerCase();
-        })
-        console.log(newdata)
-        if(newdata.length===0){
-          if(exp!==15){
-          newProfiles(exp,modifiedArray)
-        }
-        else{
-          const randomArray = getRandomElementsFromArray(data, 5);
-      setfeaturedProfile(randomArray)
-        }
-      }
-        else{
-        setnewprofiles(newdata)
-        setfeaturedProfile(newdata)
-    }
+
+const applyFilters=()=>{
+  let updatedList = data;
+
+  //experience filter
+  if(ExYears){
+   updatedList = updatedList.filter(profile=>{
+    return profile.experience=== `${ExYears} years`
+   })
+  }
+
+  //workprofile filter
+if(checkedText.length!==0){
+  updatedList = updatedList.filter(profile=>{
+    return checkedText.includes(profile.work_mode)
+  })
 }
-  };
+
+console.log(updatedList)
+
+setfeaturedProfile(updatedList)
+
+}
 
 useEffect(()=>{
-      const originalArray = data;
-      const randomArray = getRandomElementsFromArray(originalArray, 5);
-      setfeaturedProfile(randomArray)
-      
+    
+     applyFilters(); 
 
-},[])
+},[ExYears, checkedText])
 
   
   return (
@@ -124,9 +64,10 @@ useEffect(()=>{
           <div className="experience filter-common">
             <span className="filter-title">Experience</span>
             <div className="experience-list">
-              <input type="range" className="price-range" min="0" max="10" onChange={HandleChange}/>
+              <input type="range" className="price-range" min="0" max="10" ref={inputRef}
+ onChange={HandleChange}/>
               <div className="exp-years">
-                <span className="min">{`${age} Yrs`}</span>
+                <span className="min">{ExYears===null? 0: ExYears} years</span>
                 <span className="max">Any</span>
               </div>
             </div>
@@ -136,17 +77,17 @@ useEffect(()=>{
             <span className="filter-title">Work Mode</span>
             <div className="work-mode-list">
               <div className="checkcon">
-                <input type="checkbox" name="" id="from-home"  ref={workRef}  onChange={handleCheckChange}/>
-                <label htmlFor="from-home">Work from Home</label>
+                <input type="checkbox" name="" id="work-from-home"  onChange={HandleCheckChange}/>
+                <label htmlFor="work-from-home">Work from Home</label>
               </div>
               <div className="checkcon">
                 
-                <input type="checkbox" name="" id="hybrid" ref={remoteRef}  onChange={handleCheckChange} />
+                <input type="checkbox" name="" id="hybrid"  onChange={HandleCheckChange} />
                 <label htmlFor="hybrid">Hybrid</label>
               </div>
               <div className="checkcon">
                 
-                <input type="checkbox" name="" id="remote" ref={hybridRef}  onChange={handleCheckChange}/>
+                <input type="checkbox" name="" id="remote" onChange={HandleCheckChange}/>
                 <label htmlFor="remote">Remote</label>
               </div>
             </div>
