@@ -6,6 +6,9 @@ const JobSearch = () => {
   const inputRef = useRef(null);
 const [featuredProfile, setfeaturedProfile] = useState(data)
 const [checkedText, setcheckedText] = useState([])
+const [RoleChange, setRoleChange] = useState([])
+const [EduChange, setEduChange] = useState([])
+const [SalaryRange, setSalaryRange] = useState([])
 const [ExYears, setExYears] = useState(null)
 
 function HandleChange(e) {
@@ -22,6 +25,46 @@ function HandleCheckChange(e) {
       return text!==target
     }))
   }
+}
+
+function HandleRoleChange(e) {
+  let target = e.target.nextElementSibling.innerText;
+  if(e.target.checked){
+    setRoleChange([...RoleChange, target])
+}
+else{
+ setRoleChange(RoleChange.filter(text=>{
+   return text!==target
+ }))
+}
+}
+
+function HandleEduChange(e) {
+  let target = e.target.nextElementSibling.innerText;
+  if(e.target.checked){
+    setEduChange([...EduChange, target])
+}
+else{
+ setEduChange(EduChange.filter(text=>{
+   return text!==target
+ }))
+}
+}
+function HandleSalaryRange(e) {
+  let target = e.target.id;
+  let newString = target.replace(" Lakhs","")
+  // setSalaryRange([...SalaryRange,newString])
+  // let first = parseInt(newString.slice(0,newString.indexOf('-')))
+  // let second = parseInt(newString.slice(newString.indexOf('-')+1, newString.length))
+  // console.log(first, second)
+  if(e.target.checked){
+    setSalaryRange([...SalaryRange, newString])
+}
+else{
+setSalaryRange(SalaryRange.filter(number=>{
+  return number!==newString
+}))
+}
 }
 
 const applyFilters=()=>{
@@ -41,6 +84,43 @@ if(checkedText.length!==0){
   })
 }
 
+//rolecategory filter
+if(RoleChange.length!==0){
+  updatedList = updatedList.filter(profile=>{
+    return RoleChange.includes(profile.job_description)
+  })
+}
+
+//education category filter
+if(EduChange.length!==0){
+  updatedList = updatedList.filter(profile=>{
+    return EduChange.includes(profile.education)
+  })
+}
+
+//Salary range filter
+if(SalaryRange.length!=0){
+  console.log(SalaryRange)
+  
+  let newarray = [];
+ 
+    SalaryRange.map(num=>{
+  let first = parseInt(num.slice(0,num.indexOf('-')))
+  let second = parseInt(num.slice(num.indexOf('-')+1, num.length))
+  
+    for (let index = first; index <= second; index++) {
+     newarray.push(index)
+    } 
+    })
+    newarray = Array.from(new Set(newarray))
+    console.log(newarray)
+  
+    updatedList = updatedList.filter(profile=>{
+      return newarray.includes(parseInt(profile.salary.replace(" Lakhs","")))
+    })
+    
+}
+
 console.log(updatedList)
 
 setfeaturedProfile(updatedList)
@@ -51,7 +131,7 @@ useEffect(()=>{
     
      applyFilters(); 
 
-},[ExYears, checkedText])
+},[ExYears, checkedText, RoleChange, EduChange, SalaryRange])
 
   
   return (
@@ -93,9 +173,9 @@ useEffect(()=>{
             </div>
           </div>
 
-          {/* <div className="salary filter-common">
+           <div className="salary filter-common">
             <span className="filter-title">Salary</span>
-            <div className="salary-list">
+            <div className="salary-list" onChange={HandleSalaryRange}>
                 <div className="checkcon">      <input type="checkbox" name="" id="0-3" />
               <label htmlFor="0-3">0-3 Lakhs</label></div>
                 <div className="checkcon">  <input type="checkbox" name="" id="3-6" />
@@ -106,11 +186,12 @@ useEffect(()=>{
               <label htmlFor="10-15">10-15 Lakhs</label></div>
             </div>
           </div>
+
           <div className="role-category filter-common">
             <span className="filter-title">Role category</span>
-            <div className="role-category-list">
+            <div className="role-category-list" onChange={HandleRoleChange}>
                 <div className="checkcon">    <input type="checkbox" name="" id="Software-Engineer" />
-              <label htmlFor="Software Engineer">Software Engineer</label></div>
+              <label htmlFor="Software-Engineer">Software Engineer</label></div>
                 <div className="checkcon">   <input type="checkbox" name="" id="Data-Scientist" />
               <label htmlFor="Data-Scientist">Data Scientist</label></div>
                 <div className="checkcon">       <input type="checkbox" name="" id="Product-Manager" />
@@ -119,16 +200,17 @@ useEffect(()=>{
               <label htmlFor="Graphic-Designer">Graphic Designer</label></div>
             </div>
           </div>
+        
           <div className="education filter-common">
             <span className="filter-title">Education</span>
-            <div className="education-list">
+            <div className="education-list" onChange={HandleEduChange}>
                 <div className="checkcon">      <input type="checkbox" name="" id="pg" />
               <label htmlFor="pg">Post Graduate</label></div>
                 <div className="checkcon">   <input type="checkbox" name="" id="graduate" />
-              <label htmlFor="graduate">B.Tech/B.E</label></div>
+              <label htmlFor="graduate">B.Tech/BE</label></div>
            
             </div>
-          </div> */}
+          </div> 
         </div>
       </div>
       <div className="job-container">
