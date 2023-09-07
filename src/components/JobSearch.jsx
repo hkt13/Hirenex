@@ -100,7 +100,6 @@ if(EduChange.length!==0){
 
 //Salary range filter
 if(SalaryRange.length!=0){
-  console.log(SalaryRange)
   
   let newarray = [];
  
@@ -113,7 +112,6 @@ if(SalaryRange.length!=0){
     } 
     })
     newarray = Array.from(new Set(newarray))
-    console.log(newarray)
   
     updatedList = updatedList.filter(profile=>{
       return newarray.includes(parseInt(profile.salary.replace(" Lakhs","")))
@@ -121,7 +119,6 @@ if(SalaryRange.length!=0){
     
 }
 
-console.log(updatedList)
 
 setfeaturedProfile(updatedList)
 
@@ -214,18 +211,28 @@ useEffect(()=>{
         </div>
       </div>
       <div className="job-container">
-       {featuredProfile.map((profile,index)=>{
+       {featuredProfile.length!==0 ? featuredProfile.map((profile,index)=>{
         return(
             <div key={index}>
                  <Profile profile={profile}/>
             </div>
        
         )
-       })}
+       }) :
+        <div className="empty">
+          <div className="empty_img">
+          <img src="/images/empty.webp" alt="" />
+          </div>
+<div className="empty_heading">
+
+ No Results Found
+</div>
+        </div>
+       }
 
       </div>
     </div>
-  );
+  ); 
 };
 
 export default JobSearch;

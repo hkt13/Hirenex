@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
 
 .job-search{
-    border: 2px solid red;
     padding: 3rem 6rem;
     background: #f3f3fdd4;
     display: grid;
@@ -14,7 +14,9 @@
     background: #fff;
     border-radius: 10px;
     border: 1px solid #e7e7f1;
-    height: 26rem;
+    height: 61rem;
+    position: sticky;
+    top: 5px;
 }
 
 .filter-common{
@@ -83,3 +85,30 @@ margin-top: 12px;
     margin-bottom: 10px;
 }
 
+.empty_heading{
+    font-size: 2rem;
+    color: #474d6a;
+    margin-top: -2rem;
+    font-family: 'Alice', serif;
+}
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e7e7f1;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    height: 30rem;
+}
+
+.empty_img{
+    width: 15rem;
+    height: 15rem;
+}
+
+.empty_img img{
+    width: 100%;
+}
