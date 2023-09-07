@@ -3,7 +3,7 @@
 
 <p> <b>HireNex</b> is a powerful candidate searching platform designed to simplify the hiring process for employers. This project was developed to assist employers in finding the most suitable candidates for their job openings efficiently.</p>
 
-<h3 align="left">👉 Live Demo: <a href="https://hkt13.github.io/CarRental/"target="_blank">Live Demo</a></h3>
+<h3 align="left">👉 Live Demo: <a href="https://hkt13.github.io/Hirenex/"target="_blank">Live Demo</a></h3>
 <h3>Build with:</h3>
 
 »  React JS <br>
