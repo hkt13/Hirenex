@@ -221,7 +221,7 @@ useEffect(()=>{
        }) :
         <div className="empty">
           <div className="empty_img">
-          <img src="/images/empty.webp" alt="" />
+          <img src="./images/empty.webp" alt="" />
           </div>
 <div className="empty_heading">
 

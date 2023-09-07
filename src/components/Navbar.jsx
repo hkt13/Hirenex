@@ -4,7 +4,7 @@ const Navbar = () => {
     <div className="navbar">
       <nav className="nav-center">
         <div className="logo">
-          <img src="/images/logo.png" alt="" />
+          <img src="./images/logo.png" alt="" />
           <span>HireNex</span>
         </div>
         <div className="links">

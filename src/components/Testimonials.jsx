@@ -31,7 +31,7 @@ return (
           }
           setindex(index-1)
       }}>
-            <img src="/images/left-arrow.svg" alt="" />
+            <img src="./images/left-arrow.svg" alt="" />
         </button>
         <div className="testimonials-info">
             <div className="testi-img">
@@ -42,7 +42,7 @@ return (
                     <h3>{name}</h3>
                     <p>Hiring at {`${company}`}</p>
                     <div className="testi-linkedin">
-                       <a href={url}> <img src="/images/linkedin_tes.svg" alt="" /></a>
+                       <a href={url}> <img src="./images/linkedin_tes.svg" alt="" /></a>
                     </div>
                 </div>
                 <div className="testi-desc-info">
@@ -57,7 +57,7 @@ return (
           }
           setindex(index+1)
       }}>
-           <img src="/images/right-arrow.svg" alt="" />
+           <img src="./images/right-arrow.svg" alt="" />
         </button>
     </div>
 </section>
